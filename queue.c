@@ -1,15 +1,15 @@
 #include "monty.h"
 /**
- * f_queue - prints the top
- * @head: stack head
- * @line_number: line number
- * Return: no return
-*/
-void f_queue(stack_t **head, unsigned int line_number)
+ * my_queue - program prints top
+ * @head: head of stack
+ * @counter: line_number
+ * Return: void
+ */
+void my_queue(stack_t **head, unsigned int counter)
 {
-	(void)head;
-	(void)line_number;
+	(void)counter;
 	bus.lifi = 1;
+	(void)head;
 }
 
 /**
@@ -20,29 +20,30 @@ void f_queue(stack_t **head, unsigned int line_number)
 */
 void addqueue(stack_t **head, int n)
 {
-	stack_t *new_node, *aux;
+	stack_t *new_node = malloc(sizeof(stack_t));
+	stack_t *current = *head;
 
-	aux = *head;
-	new_node = malloc(sizeof(stack_t));
 	if (new_node == NULL)
 	{
 		printf("Error\n");
+		return;
 	}
+
 	new_node->n = n;
 	new_node->next = NULL;
-	if (aux)
+
+	if (*head == NULL)
 	{
-		while (aux->next)
-			aux = aux->next;
-	}
-	if (!aux)
-	{
-		*head = new_node;
 		new_node->prev = NULL;
+		*head = new_node;
+		return;
 	}
-	else
+
+	while (current->next != NULL)
 	{
-		aux->next = new_node;
-		new_node->prev = aux;
+		current = current->next;
 	}
+
+	current->next = new_node;
+	new_node->prev = current;
 }

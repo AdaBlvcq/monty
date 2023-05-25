@@ -1,12 +1,12 @@
 #include "monty.h"
 /**
-  *do_nothing - Placeholder function with no operation
-  *@head: stack head
-  *@line_number: The line number
-  *Return: no return
+ * my_nop -program performs no action
+ * @head: head of stack
+ * @counter: line_number
+ * Return: void
  */
-void do_nothing(stack_t **head, unsigned int line_number)
+void my_nop(stack_t **head, unsigned int counter)
 {
-	(void) line_number;
-	(void) head;
+	(void)counter;
+	(void)head;
 }
